@@ -5,7 +5,7 @@ import { Channel, connect } from "amqplib";
 
 AppDataSource.initialize()
   .then((db) => {
-    connect("amqp://guest:guest@localhost:5672").then((conn) => {
+    connect("amqp://guest:guest@rabbit:5672").then((conn) => {
       conn.createChannel().then((ch: Channel) => {
         const app: Application = express();
 
@@ -32,7 +32,7 @@ AppDataSource.initialize()
           { noAck: false }
         );
 
-        app.listen(3001, () => {
+        app.listen(3000, () => {
           console.log("Server started on port 3001");
         });
       });

@@ -5,7 +5,7 @@ import { Product } from "./entity";
 
 AppDataSource.initialize()
   .then((db) => {
-    connect("amqp://guest:guest@localhost:5672").then((conn) => {
+    connect("amqp://guest:guest@rabbit:5672").then((conn) => {
       conn.createChannel().then((ch: Channel) => {
         const app: Application = express();
 
